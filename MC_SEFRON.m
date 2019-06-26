@@ -15,7 +15,7 @@ order=1:train_size;
 %Initialize weith and firing threshlod
 for j=1:train_size
              Sample=Spike_code(Spike_Train(order(j),:),Train_class(order(j)),model);             
-             if (all(Output_neuron.weight(:,:,Sample.class))==0)
+             if (Output_neuron.theta(Sample.class)==0)
                 Output_size = Output_size+1;
                 Output_neuron.weight(:,:,Sample.class)=bsxfun(@times,bsxfun(model.fun,model.t_train,Sample.Spike_Time'),Sample.U_TID);               
                 Output_neuron.theta(Sample.class)=Sample.U_TID'*Sample.Esto;
